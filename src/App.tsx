@@ -4,7 +4,7 @@ import { useState } from "react";
 function App() {
   const loc = window.location.toString();
   const params = loc.split("/");
-  const [resultData, setResultData] = useState<string>('')
+  const [resultData, setResultData] = useState<any>()
 
   const onClick = async () => {
     // testing
@@ -20,7 +20,9 @@ function App() {
       <div onClick={onClick}>
         Click me
       </div>
-      <div>{resultData}</div>
+      {resultData != null &&
+        resultData?.message
+      }
     </div>
   );
 }
