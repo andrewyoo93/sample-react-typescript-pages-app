@@ -23,26 +23,18 @@ function App() {
     );
   }
 
-  const appContainer = document.querySelector('#app-container');
-
-  useEffect(() => {
-    if (appContainer != null && resultData != null) {
-      const resizeObserver = new ResizeObserver(() => {
-        HelpScout.setAppHeight(appContainer.clientHeight);
-      });
-
-      resizeObserver.observe(appContainer);
-
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }
-  }, [appContainer, resultData]);
+  const appContainer = document.getElementById('root') as HTMLElement;
+  const handleResize = () => {
+  const height = appContainer.clientHeight || 300;
+  HelpScout.setAppHeight(height);
+};
+  const resizeObserver = new ResizeObserver(handleResize);
+  resizeObserver.observe(appContainer);
 
   return (
     <div className="App">
       <h1 >Hi, test</h1>
-      <p>The conversation is test - updated</p>
+      <p>The conversation is test - updated2</p>
       <br />
       <div onClick={onTemplateClick}>
         Click me for banner
