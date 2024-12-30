@@ -42,13 +42,13 @@ function App() {
   return (
     <div className="App">
       <h1 >Hi, test</h1>
-      <p>The conversation is test</p>
+      <p>The conversation is test - updated</p>
       <br />
       <div onClick={onTemplateClick}>
         Click me for banner
       </div>
 
-      <div className="App">
+      <div>
         <div onClick={onClick}>
           Click me for axios
         </div>
