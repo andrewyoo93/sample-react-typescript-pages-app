@@ -1,6 +1,6 @@
 import axios from "axios";
 import HelpScout, { NOTIFICATION_TYPES } from "@helpscout/javascript-sdk";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const loc = window.location.toString();
@@ -26,8 +26,8 @@ function App() {
   const appContainer = document.getElementById('root') as HTMLElement;
   const handleResize = () => {
   const height = appContainer.clientHeight || 300;
-  HelpScout.setAppHeight(height);
-};
+    HelpScout.setAppHeight(height);
+  };
   const resizeObserver = new ResizeObserver(handleResize);
   resizeObserver.observe(appContainer);
 
