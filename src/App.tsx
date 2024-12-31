@@ -70,44 +70,19 @@ function App() {
       "Hello from the sidebar app"
     );
   }
-  // "application-id=DbEV30RxPWxv&application-slug=88358-helpscoutapptest&X-HelpScout-Signature=%2BnHvO%2FHwW7l9hox%2BfkoJg7AYkO8%3D"
   const loc = window.location.toString();
   const params = loc.split("/");
 
   const onClick = async () => {
-    HelpScout.getApplicationContext().then(context => async () => {
-      const result = await axios.get(
+    const result = await axios.get(
       `https://app.gethealthie.com/helpscout_customer${params?.at(-1)}`
     );
-      console.log(result);
-      console.log(result.data);
-    });
-    // testing
+    console.log(result.data);
   };
 
   const onClick2 = async () => {
-    HelpScout.getApplicationContext().then(context => async () => {
-      const result = await axios.get(
-        "https://app.gethealthie.com/helpscout_customer",
-        {
-          params: {
-            conversation_id: context?.conversation?.id,
-            conversation_number: context?.conversation?.number,
-            customer_id: context?.customer?.id,
-            mailbox_id: context?.mailbox?.id,
-            user_id: context?.user?.id,
-            installation_ids: HelpScout.getInstallationIds()?.at(0),
-            application_id: params?.at(-1)?.split('application-id=')?.at(-1)?.split('&')?.at(0) || '',
-            application_slug: params?.at(-1)?.split('application-slug=')?.at(-1)?.split('&')?.at(0) || '',
-            email: context?.customer?.emails?.at(0)?.value,
-            X_HelpScout_Signature: params?.at(-1)?.split('X-HelpScout-Signature=')?.at(-1)?.split('&')?.at(0) || '',
-          },
-        }
-      );
-      console.log(result);
-      console.log(result.data);
-    });
-    // testing
+    console.log(HelpScout.getInstallationIds());
+    console.log(HelpScout.getApplicationContext());
   };
 
   async function applyStyles() {
@@ -142,7 +117,7 @@ function App() {
       <div onClick={() => setResultData(true)}>
         Click here to mock data return
       </div>
-      <p>Test4</p>
+      <p>Test7</p>
     </>
   )
 
