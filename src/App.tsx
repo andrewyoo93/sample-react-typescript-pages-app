@@ -1,5 +1,6 @@
 import HelpScout, { NOTIFICATION_TYPES } from "@helpscout/javascript-sdk";
 import { useState } from "react";
+import axios from "axios";
 import OrgInfoContainer from "./containers/OrgInfoContainer/OrgInfoContainer";
 import UserInfoContainer from "./containers/UserInfoContainer/UserInfoContainer";
 import SubscriptionInfoContainer from "./containers/SubscriptionInfoContainer/SubscriptionInfoContainer";
@@ -70,6 +71,17 @@ function App() {
     );
   }
 
+  const loc = window.location.toString();
+  const params = loc.split("/");
+
+  const onClick = async () => {
+    // testing
+    const result = await axios.get(
+      `https://app.gethealthie.com/helpscout_customer${params?.at(-1)}`
+    );
+    console.log(result.data);
+  };
+
   async function applyStyles() {
     // Get the styles from Help Scout
     const styles = await HelpScout.getAppStyles();
@@ -111,6 +123,9 @@ function App() {
       <br />
       <div onClick={onTemplateClick}>
         Click me for banner
+      </div>
+      <div onClick={onClick}>
+        Click me to console log the http request
       </div>
 
       {resultData ?
