@@ -114,8 +114,7 @@ function App() {
           Click here to mock data return
         </div>
         <p>The above will not be in the final app</p>
-        <p>Currently requires the "Allow CORS: Access-Control-Allow-Origin" browser extension enabled since CORS is not set up for this URL</p>
-        <p>The below after clicking on "Click me for axios" will auto load in the final app</p>
+        <p>The below after clicking on "Click here to mock data return" will auto load in the final app</p>
         <br />
         {resultData ?
           <>
