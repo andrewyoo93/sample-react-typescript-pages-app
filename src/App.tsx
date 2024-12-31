@@ -1,4 +1,3 @@
-import axios from "axios";
 import HelpScout, { NOTIFICATION_TYPES } from "@helpscout/javascript-sdk";
 import { useState } from "react";
 import OrgInfoContainer from "./containers/OrgInfoContainer/OrgInfoContainer";
@@ -22,19 +21,19 @@ function App() {
         "support_seat_count": 0
       },
       "current_user_info": {
-        "can_view_all_settings": "No",
+        "can_view_all_settings": "Yes",
         "can_view_billing": "Yes",
-        "can_add_clients": "No",
+        "can_add_clients": "Yes",
         "fax_enabled": "No",
-        "id": 116,
+        "id": 115,
         "last_login_at": null,
         "mixpanel_link": "mixpanel_link",
-        "patients_count": 0,
+        "patients_count": 1,
         "reply_to_emails": "No",
         "requires_2fa": "No",
-        "user_role": "Client",
+        "user_role": "Org Owner, Administrator, Standard",
         "support_dash_link": "support_dashboard_link",
-        "from_email": "dev-yourprovider@gethealthie.com",
+        "from_email": "dev-hello@gethealthie.com",
         "has_api_access": "No",
         "stripe_acct_name": null,
         "stripe_acct_status": "Restricted"
