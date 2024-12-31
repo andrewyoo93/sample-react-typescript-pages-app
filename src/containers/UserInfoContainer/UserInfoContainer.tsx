@@ -15,7 +15,7 @@ const UserInfoContainer: React.FC<IProps> = ({
       <tbody>
         <tr>
           <td>ID:</td>
-          <td>{userInfo.id}</td>
+          <td><a href={userInfo.support_dash_link}>{userInfo.id}</a></td>
         </tr>
         { userInfo.user_role !== 'Client' &&
           <>
@@ -51,12 +51,12 @@ const UserInfoContainer: React.FC<IProps> = ({
               <td>Fax:</td>
               <td>{userInfo.fax_enabled}</td>
             </tr>
-            <tr>
-              <td>Events:</td>
-              <td><a href={userInfo.mixpanel_link}>Mixpanel</a></td>
-            </tr>
           </>
         }
+        <tr>
+          <td>Events:</td>
+          <td><a href={userInfo.mixpanel_link}>Mixpanel</a></td>
+        </tr>
       </tbody>
     </table>
   );
