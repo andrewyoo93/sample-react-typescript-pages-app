@@ -1,4 +1,23 @@
 body {
   margin: 0;
   display: flex;
+  width: 215px;
+}
+
+caption {
+  text-align: left;
+  font-weight: bold;
+  margin-left: .5rem;
+}
+
+tbody tr {
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 20px;
+  word-break: break-all
+}
+
+tbody tr > * {
+  display: inline-block;
 }
