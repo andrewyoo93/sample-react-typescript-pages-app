@@ -62,18 +62,7 @@ function App() {
   const parentOrgInfo = properties?.parent_org_info;
   const subscription_info = properties?.subscription_info;
 
-  const loc = window.location.toString();
-  const params = loc.split("/");
-  const [resultData, setResultData] = useState<any>(undefined);
-
-  const onClick = async () => {
-    // testing
-    const result = await axios.get(
-      `https://app.gethealthie.com/helpscout_customer${params?.at(-1)}`
-    );
-    setResultData(result.data)
-    console.log(result.data);
-  };
+  const [resultData, setResultData] = useState<boolean>(false);
 
   function onTemplateClick() {
     HelpScout.showNotification(
@@ -106,6 +95,12 @@ function App() {
   const resizeObserver = new ResizeObserver(handleResize);
   resizeObserver.observe(appContainer);
 
+  if (resultData == null) return (
+    <div>
+      Loading...
+    </div>
+  )
+
   return (
     <div className="App">
       <p>The conversation is a test</p>
@@ -115,14 +110,14 @@ function App() {
       </div>
 
       <div>
-        <div onClick={onClick}>
-          Click me for axios
+        <div onClick={() => setResultData(true)}>
+          Click here to mock data return
         </div>
         <p>The above will not be in the final app</p>
         <p>Currently requires the "Allow CORS: Access-Control-Allow-Origin" browser extension enabled since CORS is not set up for this URL</p>
         <p>The below after clicking on "Click me for axios" will auto load in the final app</p>
         <br />
-        {resultData != null ?
+        {resultData ?
           <>
             { currentOrgInfo &&
               <>
