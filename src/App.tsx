@@ -115,7 +115,7 @@ function App() {
       <div onClick={onClick}>
         Click me to console log the http request
       </div>
-      <p>The above will not be part of the final app</p>
+      <p>The above will not be part of the final app - To run the http request, currently requires the "Allow CORS: Access-Control-Allow-Origin" browser extension until we host the actual app and set up CORS in Healthie to allow the http request</p>
       <br />
 
       {resultData ?
