@@ -95,9 +95,14 @@ function App() {
   resizeObserver.observe(appContainer);
 
   if (resultData == null) return (
-    <div>
-      Loading...
-    </div>
+    <>
+      <div>
+        Loading...
+      </div>
+      <div onClick={() => setResultData(true)}>
+        Click here to mock data return
+      </div>
+    </>
   )
 
   return (
@@ -108,44 +113,36 @@ function App() {
         Click me for banner
       </div>
 
-      <div>
-        <div onClick={() => setResultData(true)}>
-          Click here to mock data return
+      {resultData ?
+        <>
+          { currentOrgInfo &&
+            <>
+              <OrgInfoContainer
+                currentOrgInfo={currentOrgInfo}
+                userInfo={userInfo}
+                parentOrgInfo={parentOrgInfo} />
+              <br />
+            </>
+          }
+
+          { userInfo &&
+            <UserInfoContainer userInfo={userInfo} />
+          }
+
+          { subscription_info &&
+            <>
+              <br />
+              <SubscriptionInfoContainer
+                subscriptionInfo={subscription_info}
+                userInfo={userInfo} />
+            </>
+          }
+        </>
+      :
+        <div>
+          Helpscout verification failed, please reach out to Internal Tools
         </div>
-        <p>The above will not be in the final app</p>
-        <p>The below after clicking on "Click here to mock data return" will auto load in the final app</p>
-        <br />
-        {resultData ?
-          <>
-            { currentOrgInfo &&
-              <>
-                <OrgInfoContainer
-                  currentOrgInfo={currentOrgInfo}
-                  userInfo={userInfo}
-                  parentOrgInfo={parentOrgInfo} />
-                <br />
-              </>
-            }
-
-            { userInfo &&
-              <UserInfoContainer userInfo={userInfo} />
-            }
-
-            { subscription_info &&
-              <>
-                <br />
-                <SubscriptionInfoContainer
-                  subscriptionInfo={subscription_info}
-                  userInfo={userInfo} />
-              </>
-            }
-          </>
-        :
-          <div>
-            Helpscout verification failed, please reach out to Internal Tools
-          </div>
-        }
-      </div>
+      }
     </div>
   );
 }
