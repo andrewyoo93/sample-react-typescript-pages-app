@@ -17,6 +17,7 @@ tbody tr {
   list-style-position: outside;
   margin-left: 1.25rem;
   margin-bottom: .20rem;
+  color: #000000;
   word-break: break-all;
 }
 
