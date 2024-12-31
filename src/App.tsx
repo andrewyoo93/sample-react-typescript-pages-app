@@ -62,10 +62,6 @@ function App() {
   const parentOrgInfo = properties?.parent_org_info;
   const subscription_info = properties?.subscription_info;
 
-  HelpScout.getApplicationContext().then(context => {
-    console.log(context);
-  });
-
   const [resultData, setResultData] = useState<boolean | undefined>(undefined);
 
   function onTemplateClick() {
@@ -74,16 +70,44 @@ function App() {
       "Hello from the sidebar app"
     );
   }
-
+  // "application-id=DbEV30RxPWxv&application-slug=88358-helpscoutapptest&X-HelpScout-Signature=%2BnHvO%2FHwW7l9hox%2BfkoJg7AYkO8%3D"
   const loc = window.location.toString();
   const params = loc.split("/");
 
   const onClick = async () => {
-    // testing
-    const result = await axios.get(
+    HelpScout.getApplicationContext().then(context => async () => {
+      const result = await axios.get(
       `https://app.gethealthie.com/helpscout_customer${params?.at(-1)}`
     );
-    console.log(result.data);
+      console.log(result);
+      console.log(result.data);
+    });
+    // testing
+  };
+
+  const onClick2 = async () => {
+    HelpScout.getApplicationContext().then(context => async () => {
+      const result = await axios.get(
+        "https://app.gethealthie.com/helpscout_customer",
+        {
+          params: {
+            conversation_id: context?.conversation?.id,
+            conversation_number: context?.conversation?.number,
+            customer_id: context?.customer?.id,
+            mailbox_id: context?.mailbox?.id,
+            user_id: context?.user?.id,
+            installation_ids: HelpScout.getInstallationIds()?.at(0),
+            application_id: params?.at(-1)?.split('application-id=')?.at(-1)?.split('&')?.at(0) || '',
+            application_slug: params?.at(-1)?.split('application-slug=')?.at(-1)?.split('&')?.at(0) || '',
+            email: context?.customer?.emails?.at(0)?.value,
+            X_HelpScout_Signature: params?.at(-1)?.split('X-HelpScout-Signature=')?.at(-1)?.split('&')?.at(0) || '',
+          },
+        }
+      );
+      console.log(result);
+      console.log(result.data);
+    });
+    // testing
   };
 
   async function applyStyles() {
@@ -118,7 +142,7 @@ function App() {
       <div onClick={() => setResultData(true)}>
         Click here to mock data return
       </div>
-      <p>Test1</p>
+      <p>Test4</p>
     </>
   )
 
@@ -130,7 +154,10 @@ function App() {
         Click me for banner
       </div>
       <div onClick={onClick}>
-        Click me to console log the http request
+        Click me to console log the http request test 1
+      </div>
+      <div onClick={onClick2}>
+        Click me to console log the http request test 2
       </div>
 
       {resultData ?
