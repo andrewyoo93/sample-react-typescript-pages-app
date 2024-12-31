@@ -12,13 +12,13 @@ caption {
 }
 
 tbody tr {
+  color: #000000;
   display: list-item;
   list-style-type: disc;
   list-style-position: outside;
   margin-left: 1.25rem;
   margin-bottom: .20rem;
-  color: #000000;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 tbody tr > * {
