@@ -62,6 +62,10 @@ function App() {
   const parentOrgInfo = properties?.parent_org_info;
   const subscription_info = properties?.subscription_info;
 
+  HelpScout.getApplicationContext().then(context => {
+    console.log(context);
+  });
+
   const [resultData, setResultData] = useState<boolean | undefined>(undefined);
 
   function onTemplateClick() {
@@ -114,6 +118,7 @@ function App() {
       <div onClick={() => setResultData(true)}>
         Click here to mock data return
       </div>
+      <p>Test1</p>
     </>
   )
 
