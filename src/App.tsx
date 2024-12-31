@@ -1,4 +1,4 @@
-import HelpScout, { NOTIFICATION_TYPES } from "@helpscout/javascript-sdk";
+import HelpScout from "@helpscout/javascript-sdk";
 import { useState } from "react";
 import axios from "axios";
 import OrgInfoContainer from "./containers/OrgInfoContainer/OrgInfoContainer";
@@ -64,12 +64,6 @@ function App() {
 
   const [resultData, setResultData] = useState<boolean | undefined>(undefined);
 
-  function onTemplateClick() {
-    HelpScout.showNotification(
-      NOTIFICATION_TYPES.SUCCESS,
-      "Hello from the sidebar app"
-    );
-  }
   const loc = window.location.toString();
   const params = loc.split("/");
 
@@ -78,11 +72,6 @@ function App() {
       `https://app.gethealthie.com/helpscout_customer${params?.at(-1)}`
     );
     console.log(result.data);
-  };
-
-  const onClick2 = async () => {
-    console.log(HelpScout.getInstallationIds());
-    console.log(HelpScout.getApplicationContext());
   };
 
   async function applyStyles() {
@@ -114,26 +103,20 @@ function App() {
       <div>
         Loading...
       </div>
-      <div onClick={() => setResultData(true)}>
+      <button onClick={() => setResultData(true)}>
         Click here to mock data return
-      </div>
-      <p>Test7</p>
+      </button>
+      <p>The button will not be part of the final app</p>
     </>
   )
 
   return (
     <div className="App">
-      <p>The conversation is a test</p>
-      <br />
-      <div onClick={onTemplateClick}>
-        Click me for banner
-      </div>
       <div onClick={onClick}>
-        Click me to console log the http request test 1
+        Click me to console log the http request
       </div>
-      <div onClick={onClick2}>
-        Click me to console log the http request test 2
-      </div>
+      <p>The above will not be part of the final app</p>
+      <br />
 
       {resultData ?
         <>
