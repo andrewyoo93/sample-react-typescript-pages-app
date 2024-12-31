@@ -61,7 +61,7 @@ function App() {
   const parentOrgInfo = properties?.parent_org_info;
   const subscription_info = properties?.subscription_info;
 
-  const [resultData, setResultData] = useState<boolean>(false);
+  const [resultData, setResultData] = useState<boolean | undefined>(undefined);
 
   function onTemplateClick() {
     HelpScout.showNotification(
