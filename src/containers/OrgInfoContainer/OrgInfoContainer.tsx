@@ -19,10 +19,10 @@ const OrgInfoContainer: React.FC<IProps> = ({
       <caption>{parentOrgInfo?.name ?? currentOrgInfo.name}</caption>
       <tbody>
         <tr>
-          <td>Main ID:</td>
+          <td>{parentOrgInfo != null ? 'Parent ' : ''}Org ID:</td>
           <td>{parentOrgInfo?.id ?? currentOrgInfo.id}</td>
         </tr>
-        { parentOrgInfo &&
+        { parentOrgInfo != null &&
           <>
             <tr>
               <td>Sub-org ID:</td>

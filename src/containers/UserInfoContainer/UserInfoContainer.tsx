@@ -14,7 +14,7 @@ const UserInfoContainer: React.FC<IProps> = ({
       <caption>{userInfo.user_role}</caption>
       <tbody>
         <tr>
-          <td>ID:</td>
+          <td>User ID:</td>
           <td><a href={userInfo.support_dash_link}>{userInfo.id}</a></td>
         </tr>
         { userInfo.user_role !== 'Client' &&

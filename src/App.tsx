@@ -64,15 +64,18 @@ function App() {
 
   const [resultData, setResultData] = useState<boolean | undefined>(undefined);
 
-  const loc = new URL(window.location.toString());
-  const params = loc.searchParams;
-  const signature = params.get('X-HelpScout-Signature');
-  params.delete('X-HelpScout-Signature');
-  const request_params = params.toString();
+  // const loc = new URL(window.location.toString());
+  // const params = loc.searchParams;
+  // const signature = params.get('X-HelpScout-Signature');
+  // params.delete('X-HelpScout-Signature');
+  // const request_params = params.toString();
+
+  const loc = window.location.toString();
+  const params = loc.split("/");
 
   const onClick = async () => {
     const result = await axios.get(
-      `https://app.gethealthie.com/helpscout_customer/?${request_params}${signature}`
+      `https://app.gethealthie.com/helpscout_customer/${params?.at(-1)}`
     );
     console.log(result.data);
   };
