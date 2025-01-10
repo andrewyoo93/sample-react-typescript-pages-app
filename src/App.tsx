@@ -41,7 +41,7 @@ function App() {
       },
       "parent_org_info": {
         "id": 3,
-        "name": "parent org test"
+        "name": "Parent org test name"
       },
       "subscription_info": {
         "id": "cus_RSCwvIVOOC5IBq",
@@ -56,7 +56,59 @@ function App() {
       }
     }
   }
-  const properties = mockResults.properties;
+
+  const mockResults2 = {
+    "message": "Validation passed",
+    "properties": {
+        "current_org_info": {
+            "id": 4,
+            "is_whitelabeled": "No",
+            "member_count": 1,
+            "name": "Suborg Test",
+            "organization_email": "parent_org_provider@example.com",
+            "patients_count": 1,
+            "providers_count": 1,
+            "reply_to_emails": "No",
+            "standard_seat_count": 1,
+            "support_seat_count": 0
+        },
+        "current_user_info": {
+            "can_view_all_settings": "No",
+            "can_view_billing": "Yes",
+            "can_add_clients": "No",
+            "fax_enabled": "No",
+            "id": 116,
+            "last_login_at": null,
+            "mixpanel_link": "mixpanel_link",
+            "patients_count": 0,
+            "reply_to_emails": "No",
+            "requires_2fa": "No",
+            "user_role": "Client",
+            "support_dash_link": "support_dashboard_link",
+            "from_email": "dev-yourprovider@gethealthie.com",
+            "has_api_access": "No",
+            "stripe_acct_name": null,
+            "stripe_acct_status": "Restricted"
+        },
+        "parent_org_info": {
+            "id": 3,
+            "name": "parent org test"
+        },
+        "subscription_info": {
+            "id": "cus_RSCwvIVOOC5IBq",
+            "next_payment_amount": "89",
+            "next_payment_date": "2025-02-06",
+            "owner_email": "parent_org_provider@example.com",
+            "owner_name_and_id": "parent org test / 113",
+            "payment_interval": "Month",
+            "plan": "Small Practice",
+            "status": "Active",
+            "stripe_link": "stripe_link"
+        }
+    }
+}
+
+  const [properties, setProperties] = useState<any>(undefined);
   const currentOrgInfo = properties?.current_org_info;
   const userInfo = properties?.current_user_info;
   const parentOrgInfo = properties?.parent_org_info;
@@ -104,13 +156,22 @@ function App() {
   const resizeObserver = new ResizeObserver(handleResize);
   resizeObserver.observe(appContainer);
 
-  if (resultData == null) return (
+  if (resultData == null && properties == null) return (
     <>
       <div>
         Loading...
       </div>
-      <button onClick={() => setResultData(true)}>
-        Click here to mock data return
+      <button onClick={() => {
+        setProperties(mockResults);
+        setResultData(true);
+      }}>
+        Click here to mock provider data return
+      </button>
+      <button onClick={() => {
+        setProperties(mockResults2);
+        setResultData(true);
+      }}>
+        Click here to mock client data return
       </button>
       <p>The button will not be part of the final app</p>
     </>
