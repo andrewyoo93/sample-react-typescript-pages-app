@@ -60,61 +60,123 @@ function App() {
   const mockResults2 = {
     "message": "Validation passed",
     "properties": {
-        "current_org_info": {
-            "id": 4,
-            "is_whitelabeled": "No",
-            "member_count": 1,
-            "name": "Suborg Test",
-            "organization_email": "parent_org_provider@example.com",
-            "patients_count": 1,
-            "providers_count": 1,
-            "reply_to_emails": "No",
-            "standard_seat_count": 1,
-            "support_seat_count": 0
-        },
-        "current_user_info": {
-            "can_view_all_settings": "No",
-            "can_view_billing": "Yes",
-            "can_add_clients": "No",
-            "fax_enabled": "No",
-            "id": 116,
-            "last_login_at": null,
-            "mixpanel_link": "mixpanel_link",
-            "patients_count": 0,
-            "reply_to_emails": "No",
-            "requires_2fa": "No",
-            "user_role": "Client",
-            "support_dash_link": "support_dashboard_link",
-            "from_email": "dev-yourprovider@gethealthie.com",
-            "has_api_access": "No",
-            "stripe_acct_name": null,
-            "stripe_acct_status": "Restricted"
-        },
-        "parent_org_info": {
-            "id": 3,
-            "name": "parent org test"
-        },
-        "subscription_info": {
-            "id": "cus_RSCwvIVOOC5IBq",
-            "next_payment_amount": "89",
-            "next_payment_date": "2025-02-06",
-            "owner_email": "parent_org_provider@example.com",
-            "owner_name_and_id": "parent org test / 113",
-            "payment_interval": "Month",
-            "plan": "Small Practice",
-            "status": "Active",
-            "stripe_link": "stripe_link"
-        }
+      "current_org_info": {
+        "id": 4,
+        "is_whitelabeled": "No",
+        "member_count": 1,
+        "name": "Suborg Test",
+        "organization_email": "parent_org_provider@example.com",
+        "patients_count": 1,
+        "providers_count": 1,
+        "reply_to_emails": "No",
+        "standard_seat_count": 1,
+        "support_seat_count": 0
+      },
+      "current_user_info": {
+        "can_view_all_settings": "No",
+        "can_view_billing": "Yes",
+        "can_add_clients": "No",
+        "fax_enabled": "No",
+        "id": 116,
+        "last_login_at": null,
+        "mixpanel_link": "mixpanel_link",
+        "patients_count": 0,
+        "reply_to_emails": "No",
+        "requires_2fa": "No",
+        "user_role": "Client",
+        "support_dash_link": "support_dashboard_link",
+        "from_email": "dev-yourprovider@gethealthie.com",
+        "has_api_access": "No",
+        "stripe_acct_name": null,
+        "stripe_acct_status": "Restricted"
+      },
+      "parent_org_info": {
+        "id": 3,
+        "name": "Parent org test name"
+      },
+      "subscription_info": {
+        "id": "cus_RSCwvIVOOC5IBq",
+        "next_payment_amount": "89",
+        "next_payment_date": "2025-02-06",
+        "owner_email": "parent_org_provider@example.com",
+        "owner_name_and_id": "parent org test / 113",
+        "payment_interval": "Month",
+        "plan": "Small Practice",
+        "status": "Active",
+        "stripe_link": "stripe_link"
+      }
     }
-}
+  }
 
-  const [properties, setProperties] = useState<any>(undefined);
+  const mockResults3 = {
+    "message": "Validation passed",
+    "properties": {
+      "current_org_info": {
+        "id": 3,
+        "is_whitelabeled": "No",
+        "member_count": 2,
+        "name": "Parent org test name",
+        "organization_email": "parent_org_provider@example.com",
+        "patients_count": 2,
+        "providers_count": 1,
+        "reply_to_emails": "No",
+        "standard_seat_count": 1,
+        "support_seat_count": 1
+      },
+      "current_user_info": {
+        "can_view_all_settings": "Yes",
+        "can_view_billing": "Yes",
+        "can_add_clients": "Yes",
+        "fax_enabled": "No",
+        "id": 117,
+        "last_login_at": null,
+        "mixpanel_link": "https://mixpanel.com/project/1743661/view/125819/app/profile#distinct_id=117",
+        "patients_count": 0,
+        "reply_to_emails": "No",
+        "requires_2fa": "No",
+        "user_role": "Administrator, Support",
+        "support_dash_link": "https://secure.gethealthie.com/support_dashboard/user/117",
+        "from_email": "dev-hello@gethealthie.com",
+        "has_api_access": "No",
+        "stripe_acct_name": null,
+        "stripe_acct_status": "Restricted"
+      },
+      "parent_org_info": null,
+      "subscription_info": {
+        "id": "cus_RSCwvIVOOC5IBq",
+        "next_payment_amount": "89",
+        "next_payment_date": "2025-02-06",
+        "owner_email": "parent_org_provider@example.com",
+        "owner_name_and_id": "parent org test / 113",
+        "payment_interval": "Month",
+        "plan": "Small Practice",
+        "status": "Active",
+        "stripe_link": "https://dashboard.stripe.com/customers/cus_RSCwvIVOOC5IBq"
+      }
+    }
+  }
+
+  const properties = mockResults.properties;
   const currentOrgInfo = properties?.current_org_info;
   const userInfo = properties?.current_user_info;
   const parentOrgInfo = properties?.parent_org_info;
-  const subscription_info = properties?.subscription_info;
+  const subscriptionInfo = properties?.subscription_info;
+
+  const properties2 = mockResults2.properties;
+  const currentOrgInfo2 = properties2?.current_org_info;
+  const userInfo2 = properties2?.current_user_info;
+  const parentOrgInfo2 = properties2?.parent_org_info;
+  const subscriptionInfo2 = properties2?.subscription_info;
+
+  const properties3 = mockResults3.properties;
+  const currentOrgInfo3 = properties3?.current_org_info;
+  const userInfo3 = properties3?.current_user_info;
+  const parentOrgInfo3 = properties3?.parent_org_info;
+  const subscriptionInfo3 = properties3?.subscription_info;
 
   const [resultData, setResultData] = useState<boolean | undefined>(undefined);
+  const [resultData2, setResultData2] = useState<boolean | undefined>(undefined);
+  const [resultData3, setResultData3] = useState<boolean | undefined>(undefined);
 
   // const loc = new URL(window.location.toString());
   // const params = loc.searchParams;
@@ -156,22 +218,19 @@ function App() {
   const resizeObserver = new ResizeObserver(handleResize);
   resizeObserver.observe(appContainer);
 
-  if (resultData == null && properties == null) return (
+  if (resultData == null && resultData2 == null && resultData3 == null) return (
     <>
       <div>
         Loading...
       </div>
-      <button onClick={() => {
-        setProperties(mockResults);
-        setResultData(true);
-      }}>
-        Click here to mock provider data return
+      <button onClick={() => setResultData3(true)}>
+        Click here to mock parent org provider data return
       </button>
-      <button onClick={() => {
-        setProperties(mockResults2);
-        setResultData(true);
-      }}>
-        Click here to mock client data return
+      <button onClick={() => setResultData(true)}>
+        Click here to mock suborg provider data return
+      </button>
+      <button onClick={() => setResultData2(true)}>
+        Click here to mock suborg client data return
       </button>
       <p>The button will not be part of the final app</p>
     </>
@@ -185,7 +244,7 @@ function App() {
       <p>The above will not be part of the final app - To run the http request, currently requires the "Allow CORS: Access-Control-Allow-Origin" browser extension until we host the actual app and set up CORS in Healthie to allow the http request</p>
       <br />
 
-      {resultData ?
+      {resultData &&
         <>
           { currentOrgInfo &&
             <>
@@ -201,19 +260,69 @@ function App() {
             <UserInfoContainer userInfo={userInfo} />
           }
 
-          { subscription_info &&
+          { subscriptionInfo &&
             <>
               <br />
               <SubscriptionInfoContainer
-                subscriptionInfo={subscription_info}
+                subscriptionInfo={subscriptionInfo}
                 userInfo={userInfo} />
             </>
           }
         </>
-      :
-        <div>
-          Helpscout verification failed, please reach out to Internal Tools
-        </div>
+      }
+
+      {resultData2 &&
+        <>
+          { currentOrgInfo2 &&
+            <>
+              <OrgInfoContainer
+                currentOrgInfo={currentOrgInfo2}
+                userInfo={userInfo2}
+                parentOrgInfo={parentOrgInfo2} />
+              <br />
+            </>
+          }
+
+          { userInfo2 &&
+            <UserInfoContainer userInfo={userInfo2} />
+          }
+
+          { subscriptionInfo2 &&
+            <>
+              <br />
+              <SubscriptionInfoContainer
+                subscriptionInfo={subscriptionInfo2}
+                userInfo={userInfo2} />
+            </>
+          }
+        </>
+      }
+
+      {resultData3 &&
+        <>
+          { currentOrgInfo3 &&
+            <>
+              <OrgInfoContainer
+                currentOrgInfo={currentOrgInfo3}
+                userInfo={userInfo3}
+                parentOrgInfo={parentOrgInfo3 ?? undefined} />
+              <br />
+            </>
+          }
+
+          { userInfo3 &&
+            <UserInfoContainer userInfo={userInfo3} />
+          }
+
+          { subscriptionInfo3 &&
+            <>
+              <br />
+              <SubscriptionInfoContainer
+                subscriptionInfo={subscriptionInfo3}
+                userInfo={userInfo3} />
+            </>
+          }
+        </>
       }
     </div>
   );
